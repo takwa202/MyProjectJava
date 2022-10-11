@@ -18,7 +18,7 @@ public class Pharmacien {
     private int NumTel_Pharmacien;
     private String MotDePasse_Pharmacien;
     private String Email_Pharmacien;
-    private Boolean Blockfarm;
+    private int Blockfarm;
 
     public Pharmacien(
             int Id_Pharmacien,
@@ -28,8 +28,29 @@ public class Pharmacien {
             int NumTel_Pharmacien,
             String MotDePasse_Pharmacien,
             String Email_Pharmacien,
-            Boolean Blockfarm) {
+            int Blockfarm) {
          this.Id_Pharmacien = Id_Pharmacien;
+        this.Prenom_Pharmacien = Prenom_Pharmacien;
+        this.nom_Pharmacien = nom_Pharmacien;
+        this.Adress_Pharmacien = Adress_Pharmacien;
+        this.NumTel_Pharmacien = NumTel_Pharmacien;
+        this.MotDePasse_Pharmacien = MotDePasse_Pharmacien;
+        this.Email_Pharmacien = Email_Pharmacien;
+        this.Blockfarm= Blockfarm;
+
+    }
+    
+   // constructor without id
+    public Pharmacien(
+           
+            String nom_Pharmacien,
+            String Prenom_Pharmacien,
+            String Adress_Pharmacien,
+            int NumTel_Pharmacien,
+            String MotDePasse_Pharmacien,
+            String Email_Pharmacien,
+            int Blockfarm) {
+         
         this.Prenom_Pharmacien = Prenom_Pharmacien;
         this.nom_Pharmacien = nom_Pharmacien;
         this.Adress_Pharmacien = Adress_Pharmacien;
@@ -39,7 +60,6 @@ public class Pharmacien {
         this.Blockfarm = Blockfarm;
 
     }
-
     public int getId_Pharmacien() {
         return Id_Pharmacien;
     }
@@ -96,11 +116,11 @@ public class Pharmacien {
         this.Email_Pharmacien = Email_Pharmacien;
     }
 
-    public Boolean getBlockfarm() {
+    public int getBlockfarm() {
         return Blockfarm;
     }
 
-    public void setBlockfarm(Boolean Blockfarm) {
+    public void setBlockfarm(int Blockfarm) {
         this.Blockfarm = Blockfarm;
     }
 

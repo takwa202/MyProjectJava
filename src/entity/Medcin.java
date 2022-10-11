@@ -27,13 +27,13 @@ public class Medcin {
     private String photo_dip;
     private int nb_rec_med;
     private int nb_patient;
-    private Boolean is_Blocked;
+    private int is_Blocked;
      private String spéciatilte;
 
  //hetha all data constructor
          //(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getTimestamp(4),rs.getInt(5),rs.getString(6),rs.getString(7),  rs.getString(8),rs.getString(9),rs.getInt(10),rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14)),rs.getBoolean(15),rs.getString(16));
 
-    public Medcin(int id_med, String mdp_med, String email_med, Timestamp date_naissance_med, int age_med, String adresse_med, String genre_med, String nom_med, String prenom_med,  int num_tel_med, String photo_med,String photo_dip, int nb_rec_med, int nb_patient, Boolean is_Blocked,String spéciatilte) {
+    public Medcin(int id_med, String mdp_med, String email_med, Timestamp date_naissance_med, int age_med, String adresse_med, String genre_med, String nom_med, String prenom_med,  int num_tel_med, String photo_med,String photo_dip, int nb_rec_med, int nb_patient, int is_Blocked,String spéciatilte) {
         this.id_med = id_med;
         this.mdp_med = mdp_med;
         this.email_med = email_med;
@@ -76,7 +76,7 @@ public class Medcin {
 
     }
 //hetha pour blocker
-    public Medcin(Boolean is_Blocked) {
+    public Medcin(int is_Blocked) {
         /*  this.is_Blocked = is_Blocked;
          this.mdp_med = mdp_med;
          this.email_med = email_med;
@@ -198,11 +198,11 @@ public class Medcin {
         this.nb_patient = nb_patient;
     }
 
-    public Boolean getIs_Blocked() {
+    public int getIs_Blocked() {
         return is_Blocked;
     }
 
-    public void setIs_Blocked(Boolean is_Blocked) {
+    public void setIs_Blocked(int is_Blocked) {
         this.is_Blocked = is_Blocked;
     }
 

@@ -41,7 +41,7 @@ public class MedServices implements InterMedServeses<Medcin> {
     @Override
     public void insert(Medcin med) {
         String req = "INSERT INTO `medecin`(`mdp_med`, `email_med`, `date_naissance_med`, `age_med`, `adresse_med`, `genre_med`,`nom_med`, `prenom_med`, `num_tel_med`, `photo_med`, `spéciatilte`) "
-                + "values ('" + med.getMdp_med() + "','" + med.getEmail_med() + "','" + med.getDate_naissance_med() + "','" + med.getAge_med() + "','"
+                + "values ('" + hashingFunction(med.getMdp_med()) + "','" + med.getEmail_med() + "','" + med.getDate_naissance_med() + "','" + med.getAge_med() + "','"
                 + med.getAdresse_med() + "','" + med.getGenre_med() + "','" + med.getNom_med() + "','" + med.getPrenom_med() + "','" + med.getNum_tel_med()
                 + "','" + med.getPhoto_med() + "','" + med.getSpéciatilte() + "')";
 
@@ -59,11 +59,11 @@ public class MedServices implements InterMedServeses<Medcin> {
 
     @Override
     public void update(Medcin med, int id) {
-
+      
         /* mdp_med, email_med,date_naissance_med,
          age_med,adresse_med,  genre_med,  nom_med,  prenom_med,
          num_tel_med,  photo_med, spéciatilte*/
-        String req = "UPDATE `medecin` SET`mdp_med`='" + med.getMdp_med() + "',`email_med`='" + med.getEmail_med() + "',"
+        String req = "UPDATE `medecin` SET`mdp_med`='" +  hashingFunction(med.getMdp_med()) + "',`email_med`='" + med.getEmail_med() + "',"
                 + "`date_naissance_med`='" + med.getDate_naissance_med() + "',`age_med`='" + med.getAge_med() + "',`adresse_med`='"
                 + med.getAdresse_med() + "',`genre_med`='" + med.getGenre_med() + "',`nom_med`='" + med.getNom_med() + "',`prenom_med`='"
                 + med.getPrenom_med() + "',`num_tel_med`='" + med.getNum_tel_med() + "',`photo_med`='" + med.getPhoto_med() + "',`spéciatilte`='"
@@ -106,7 +106,7 @@ public class MedServices implements InterMedServeses<Medcin> {
             Statement st = conx.createStatement();
             rs = st.executeQuery(req);
             while (rs.next()) {
-                Medcin e = new Medcin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), rs.getBoolean(15), rs.getString(16));
+                Medcin e = new Medcin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), rs.getInt(15), rs.getString(16));
                 list.add(e);
             }
             System.out.println("MEDCIN DELETED SUCCSEFULY !");
@@ -127,7 +127,7 @@ public class MedServices implements InterMedServeses<Medcin> {
             Statement st = conx.createStatement();
             rs = st.executeQuery(req);
             while (rs.next()) {
-                Medcin e = new Medcin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), rs.getBoolean(15), rs.getString(16));
+                Medcin e = new Medcin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), rs.getInt(15), rs.getString(16));
                 list.add(e);
             }
             System.out.println("MEDCIN FOUND SUCCSEFULY !");
