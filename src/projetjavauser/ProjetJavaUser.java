@@ -27,6 +27,7 @@ public class ProjetJavaUser {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
        
       Timestamp date = createdate();
         // TODO code application logic here
@@ -37,12 +38,15 @@ public class ProjetJavaUser {
       //  ms.update(med1,1);
       //ms.delete(10);
        // List <Medcin> res = ms.FindAll();
-      List <Medcin> res = ms.FindById(1);
+       String res = ms.hashingFunction("hhhh");
+         System.out.println("my hashed code is");
+       System.out.println(res);
+     // List <Medcin> res = ms.FindById(1);
         
       //  searchlist(res);
        // System.out.println(res.toArray().);
-        System.out.println(res.get(0).getId_med());
-       affichlist(res);
+        //System.out.println(res.get(0).getId_med());
+      // affichlist(res);
         
         
         

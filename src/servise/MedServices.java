@@ -7,6 +7,9 @@ package servise;
 
 import InServise.InterMedServeses;
 import entity.Medcin;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -85,54 +88,54 @@ public class MedServices implements InterMedServeses<Medcin> {
         try {
             Statement st = conx.createStatement();
             st.executeUpdate(req);
-                 System.out.println("MEDCIN DELETED SUCCSEFULY !");
-            
+            System.out.println("MEDCIN DELETED SUCCSEFULY !");
+
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
- 
-        
+
     }
-    
+
     private ResultSet rs;
+
     @Override
     public List<Medcin> FindAll() {
-    List<Medcin> list =new ArrayList<>();
-     String req = "SELECT * From `medecin` ";
-         try {
+        List<Medcin> list = new ArrayList<>();
+        String req = "SELECT * From `medecin` ";
+        try {
             Statement st = conx.createStatement();
-            rs =st.executeQuery(req);
-            while(rs.next()){ 
-            Medcin e = new Medcin(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getTimestamp(4),rs.getInt(5),rs.getString(6),rs.getString(7),  rs.getString(8),rs.getString(9),rs.getInt(10),rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14),rs.getBoolean(15),rs.getString(16));
-            list.add(e);                
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                Medcin e = new Medcin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), rs.getBoolean(15), rs.getString(16));
+                list.add(e);
             }
-                 System.out.println("MEDCIN DELETED SUCCSEFULY !");
-            
+            System.out.println("MEDCIN DELETED SUCCSEFULY !");
+
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
- return list;
-    
+        return list;
+
     }
 
     @Override
     public List FindById(int id) {
-    List<Medcin> list = new ArrayList<>();
-   String req = "SELECT  `id_med`, `mdp_med`, `email_med`, `date_naissance_med`, `age_med`, `adresse_med`, `genre_med`,`nom_med`, `prenom_med`, `num_tel_med`, `photo_med`,`photo_dip`,`nb_rec_med`,`nb_patient`,`is_Blocked`,`spéciatilte` From `medecin` WHERE id_med= '" + id + "' ";
-   
-    try {
+        List<Medcin> list = new ArrayList<>();
+        String req = "SELECT  `id_med`, `mdp_med`, `email_med`, `date_naissance_med`, `age_med`, `adresse_med`, `genre_med`,`nom_med`, `prenom_med`, `num_tel_med`, `photo_med`,`photo_dip`,`nb_rec_med`,`nb_patient`,`is_Blocked`,`spéciatilte` From `medecin` WHERE id_med= '" + id + "' ";
+
+        try {
             Statement st = conx.createStatement();
-            rs =st.executeQuery(req);
-            while(rs.next()){ 
-            Medcin e = new Medcin(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getTimestamp(4),rs.getInt(5),rs.getString(6),rs.getString(7),  rs.getString(8),rs.getString(9),rs.getInt(10),rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14),rs.getBoolean(15),rs.getString(16));
-            list.add(e);                
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                Medcin e = new Medcin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), rs.getBoolean(15), rs.getString(16));
+                list.add(e);
             }
-                 System.out.println("MEDCIN FOUND SUCCSEFULY !");
-            
+            System.out.println("MEDCIN FOUND SUCCSEFULY !");
+
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-    return list ;
+        return list;
     }
 
     @Override
@@ -148,6 +151,29 @@ public class MedServices implements InterMedServeses<Medcin> {
     @Override
     public void bloqueMed(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public String hashingFunction(String pass) {
+        String plaintext = "your text here";
+         String hashtext="";
+        MessageDigest m;
+        try {
+            m = MessageDigest.getInstance("MD5");
+            m.reset();
+            m.update(plaintext.getBytes());
+            byte[] digest = m.digest();
+            BigInteger bigInt = new BigInteger(1, digest);
+             hashtext = bigInt.toString(16);
+// Now we need to zero pad it if you actually want the full 32 chars.
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            };
+           
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(MedServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         return hashtext;
     }
 
 }
