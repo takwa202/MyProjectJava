@@ -7,6 +7,7 @@ package projetjavauser;
 
 import entity.Medcin;
 import entity.Pharmacien;
+import java.io.InputStream;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import servise.MedServices;
 import servise.PharmacienServeces;
+import utils.Mail;
 import utils.MyDB;
 
 /**
@@ -51,20 +53,22 @@ public class ProjetJavaUser {
         //System.out.println(res.get(0).getId_med());
         // affichlist(res);
         //**********************************************************test pharm ************************************* 
-        Pharmacien farm = new Pharmacien("NF33", "p1", "adress", 155551, "passs", "mail", 0);
+       // Pharmacien farm = new Pharmacien("NF33", "p1", "adress", 155551, "passs", "mail", 0);
         // System.out.println(farm);
-        PharmacienServeces fs = new PharmacienServeces();
+       // PharmacienServeces fs = new PharmacienServeces();
        // fs.insert(farm);
        // fs.update(farm, 4);
         //fs.delete(1);
         //List <Pharmacien>  res = fs.FindAll();
-        List <Pharmacien>  res = fs.FindById(5);
+      //  List <Pharmacien>  res = fs.FindById(5);
         //ArrayList al1 = new ArrayList();
       //  al1 = (ArrayList) res;
        // System.out.println(res.get(0).getId_Pharmacien());
-         System.out.println(res.get(0).getId_Pharmacien());
+       //  System.out.println(res.get(0).getId_Pharmacien());
+        Mail send = new Mail();
         
-
+        send.mail("hello", "test","takwalassoued066@gmail.com");
+    
     }
 
     // about time
@@ -81,7 +85,10 @@ public class ProjetJavaUser {
         }
 
     }
-
+   /* public static void addimage (String url){
+     InputStream input = ClassLoader.getResourceAsStream(url);
+    }
+*/
     public static void affichlist(List<Medcin> med) {
         // int i = 0;
         for (int j = 0; j < med.size(); j++) {

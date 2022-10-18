@@ -14,13 +14,19 @@ import javax.mail.internet.*;
  * @author lenovo
  */
 public class Mail {
-  public static void main(String [] args){  
+
+    public Mail() {
+    }
+    
+    
+  public void mail(String msg,String Subj,String to){ 
+      
     String host="smtp.gmail.com";  
   final String user="tabibiapp8@gmail.com";//change accordingly  
   final String password="txdxtmzargzqqmim";//change accordingly  
   final String  port ="587";
     
-  String to="takwalassoued066@gmail.com";//change accordingly  
+  //String to="takwalassoued066@gmail.com";//change accordingly  
   System.out.println("prepering to send mail");
    //Get the session object  
     Properties props = new Properties();  
@@ -42,13 +48,13 @@ public class Mail {
      MimeMessage message = new MimeMessage(session);  
      message.setFrom(new InternetAddress(user));  
      message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));  
-     message.setSubject("javatpoint");  
-     message.setText("This is simple program of sending email using JavaMail API");  
+     message.setSubject(Subj);  
+     message.setText(msg);  
        
     //send the message  
      Transport.send(message);  
   
-     System.out.println("message sent successfully...");  
+     System.out.println(msg);  
    
      } catch (MessagingException e) {e.printStackTrace();}  
  }  

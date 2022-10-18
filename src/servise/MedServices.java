@@ -8,8 +8,10 @@ package servise;
 import InServise.InterMedServeses;
 import entity.Medcin;
 import java.math.BigInteger;
+import java.nio.Buffer;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,12 +35,28 @@ public class MedServices implements InterMedServeses<Medcin> {
     //c'est un constructeur !!
     public MedServices() {
         conx = MyDB.getInstance().getConnection();
+        //Blob blob = conx.createBlob();
     }
     /* mdp_med, email_med,date_naissance_med,
      age_med,adresse_med,  genre_med,  nom_med,  prenom_med,
      num_tel_med,  photo_med, spéciatilte*/
 
+     public void insertimg(Blob img ){
+         
+          String req = "INSERT INTO`img` (`img`)"+"values ('" + img + "' ) ";
+            try {
+            Statement st = conx.createStatement();
+            st.executeUpdate(req);
+            // System.out.println(med); 
+            //   System.out.println(req); 
+            System.out.println("MEDCIN ADDED SUCCSEFULY !");
+            //System.out.println(med); 
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
     @Override
+    
     public void insert(Medcin med) {
         String req = "INSERT INTO `medecin`(`mdp_med`, `email_med`, `date_naissance_med`, `age_med`, `adresse_med`, `genre_med`,`nom_med`, `prenom_med`, `num_tel_med`, `photo_med`, `spéciatilte`) "
                 + "values ('" + hashingFunction(med.getMdp_med()) + "','" + med.getEmail_med() + "','" + med.getDate_naissance_med() + "','" + med.getAge_med() + "','"
@@ -95,7 +113,7 @@ public class MedServices implements InterMedServeses<Medcin> {
         }
 
     }
-
+ 
     private ResultSet rs;
 
     @Override
@@ -117,6 +135,11 @@ public class MedServices implements InterMedServeses<Medcin> {
         return list;
 
     }
+       public void imgupload(Buffer img ,int id){
+          String req = "SELECT  `img`From `img` WHERE id_img = '" + id + "' ";
+    }
+            
+
 
     @Override
     public List FindById(int id) {
