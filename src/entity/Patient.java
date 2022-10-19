@@ -14,6 +14,9 @@ public class Patient {
     private int Id_patient;
     private String Nom_patient;
     private String Prénom_patient;
+
+    public Patient() {
+    }
     private String Email_patient;
     private String Adress_patient;
     private int NumTel_patient;

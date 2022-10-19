@@ -41,27 +41,14 @@ public class MedServices implements InterMedServeses<Medcin> {
      age_med,adresse_med,  genre_med,  nom_med,  prenom_med,
      num_tel_med,  photo_med, spéciatilte*/
 
-     public void insertimg(Blob img ){
-         
-          String req = "INSERT INTO`img` (`img`)"+"values ('" + img + "' ) ";
-            try {
-            Statement st = conx.createStatement();
-            st.executeUpdate(req);
-            // System.out.println(med); 
-            //   System.out.println(req); 
-            System.out.println("MEDCIN ADDED SUCCSEFULY !");
-            //System.out.println(med); 
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-    }
+  
     @Override
     
     public void insert(Medcin med) {
         String req = "INSERT INTO `medecin`(`mdp_med`, `email_med`, `date_naissance_med`, `age_med`, `adresse_med`, `genre_med`,`nom_med`, `prenom_med`, `num_tel_med`, `photo_med`, `spéciatilte`) "
                 + "values ('" + hashingFunction(med.getMdp_med()) + "','" + med.getEmail_med() + "','" + med.getDate_naissance_med() + "','" + med.getAge_med() + "','"
                 + med.getAdresse_med() + "','" + med.getGenre_med() + "','" + med.getNom_med() + "','" + med.getPrenom_med() + "','" + med.getNum_tel_med()
-                + "','" + med.getPhoto_med() + "','" + med.getSpéciatilte() + "')";
+                + "','" + med.getPhoto_med() + "','" + med.getSpeciatilte() + "')";
 
         try {
             Statement st = conx.createStatement();
@@ -85,7 +72,7 @@ public class MedServices implements InterMedServeses<Medcin> {
                 + "`date_naissance_med`='" + med.getDate_naissance_med() + "',`age_med`='" + med.getAge_med() + "',`adresse_med`='"
                 + med.getAdresse_med() + "',`genre_med`='" + med.getGenre_med() + "',`nom_med`='" + med.getNom_med() + "',`prenom_med`='"
                 + med.getPrenom_med() + "',`num_tel_med`='" + med.getNum_tel_med() + "',`photo_med`='" + med.getPhoto_med() + "',`spéciatilte`='"
-                + med.getSpéciatilte() + "' WHERE id_med= '" + id + "'";
+                + med.getSpeciatilte() + "' WHERE id_med= '" + id + "'";
 
         try {
             Statement st = conx.createStatement();

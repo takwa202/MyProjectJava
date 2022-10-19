@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import servise.InterServices;
 import servise.MedServices;
 import servise.PharmacienServeces;
 import utils.Mail;
@@ -33,7 +34,9 @@ public class ProjetJavaUser {
      */
     public static void main(String[] args) {
       //**********************************************************test med *************************************
+InterServices inter = new InterServices();
 
+System.out.print(inter.FindById(1).toString());
      // Timestamp date = createdate();
         // TODO code application logic here
         //  MyDB db = new MyDB();
@@ -65,9 +68,9 @@ public class ProjetJavaUser {
       //  al1 = (ArrayList) res;
        // System.out.println(res.get(0).getId_Pharmacien());
        //  System.out.println(res.get(0).getId_Pharmacien());
-        Mail send = new Mail();
+        //Mail send = new Mail();
+      //send.mail("hello", "test","takwalassoued066@gmail.com");
         
-        send.mail("hello", "test","takwalassoued066@gmail.com");
     
     }
 
@@ -98,12 +101,11 @@ public class ProjetJavaUser {
         }
 
     }
-
-    public static Timestamp createdate() {
-        //  Date date = new Date(1996-1900, 11, 12);  
-        Timestamp date2 = new Timestamp(1996 - 1900, 1 - 1, 12, 4, 0, 0, 0);
-      // System.out.println(date);
-        // System.out.println(date2);
+ //  Date date = new Date(1996-1900, 11, 12);
+    public static Timestamp createdate(int y,int m,int j) {
+         
+        Timestamp date2 = new Timestamp(y - 1900, m - 1, j, 4, 0, 0, 0);
+      
         return date2;
     }
 

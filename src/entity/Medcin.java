@@ -28,12 +28,31 @@ public class Medcin {
     private int nb_rec_med;
     private int nb_patient;
     private int is_Blocked;
-     private String spéciatilte;
+     private String speciatilte;
+
+    public String getSpeciatilte() {
+        return speciatilte;
+    }
+
+    public void setSpeciatilte(String speciatilte) {
+        this.speciatilte = speciatilte;
+    }
+
+    public String getPhoto_dip() {
+        return photo_dip;
+    }
+
+    public void setPhoto_dip(String photo_dip) {
+        this.photo_dip = photo_dip;
+    }
 
  //hetha all data constructor
          //(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getTimestamp(4),rs.getInt(5),rs.getString(6),rs.getString(7),  rs.getString(8),rs.getString(9),rs.getInt(10),rs.getString(11), rs.getString(12), rs.getInt(13),rs.getInt(14)),rs.getBoolean(15),rs.getString(16));
 
-    public Medcin(int id_med, String mdp_med, String email_med, Timestamp date_naissance_med, int age_med, String adresse_med, String genre_med, String nom_med, String prenom_med,  int num_tel_med, String photo_med,String photo_dip, int nb_rec_med, int nb_patient, int is_Blocked,String spéciatilte) {
+    public Medcin() {
+    }
+
+    public Medcin(int id_med, String mdp_med, String email_med, Timestamp date_naissance_med, int age_med, String adresse_med, String genre_med, String nom_med, String prenom_med, int num_tel_med, String photo_med, String photo_dip, int nb_rec_med, int nb_patient, int is_Blocked, String spéciatilte) {
         this.id_med = id_med;
         this.mdp_med = mdp_med;
         this.email_med = email_med;
@@ -49,9 +68,7 @@ public class Medcin {
         this.nb_rec_med = nb_rec_med;
         this.nb_patient = nb_patient;
         this.is_Blocked = is_Blocked;
-        this.spéciatilte=spéciatilte;
-      
-
+        this.speciatilte=speciatilte;
     }
 
    //  Medcin("mot de pass","email",date,"adree","male","ali","prenommed",555555,"photomed","specialier")
@@ -69,7 +86,7 @@ public class Medcin {
         this.prenom_med = prenom_med;
         this.num_tel_med = num_tel_med;
         this.photo_med = photo_med;
-           this.spéciatilte=spéciatilte;
+           this.speciatilte=speciatilte;
         // this.nb_rec_med = nb_rec_med;
         // this.nb_patient = nb_patient;
         // this.is_Blocked = is_Blocked;
@@ -178,6 +195,11 @@ public class Medcin {
         return photo_med;
     }
 
+    @Override
+    public String toString() {
+        return "Medcin{" + "id_med=" + id_med + ", mdp_med=" + mdp_med + ", email_med=" + email_med + ", date_naissance_med=" + date_naissance_med + ", age_med=" + age_med + ", adresse_med=" + adresse_med + ", genre_med=" + genre_med + ", nom_med=" + nom_med + ", prenom_med=" + prenom_med + ", num_tel_med=" + num_tel_med + ", photo_med=" + photo_med + ", photo_dip=" + photo_dip + ", nb_rec_med=" + nb_rec_med + ", nb_patient=" + nb_patient + ", is_Blocked=" + is_Blocked + ", speciatilte=" + speciatilte + '}';
+    }
+
     public void setPhoto_med(String photo_med) {
         this.photo_med = photo_med;
     }
@@ -206,12 +228,5 @@ public class Medcin {
         this.is_Blocked = is_Blocked;
     }
 
-    public String getSpéciatilte() {
-        return spéciatilte;
-    }
-
-    public void setSpéciatilte(String spéciatilte) {
-        this.spéciatilte = spéciatilte;
-    }
-
+    
 }
