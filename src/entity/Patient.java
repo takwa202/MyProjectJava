@@ -155,6 +155,11 @@ public class Patient {
         this.Nb_Reclamation = Nb_Reclamation;
     }
 
+    @Override
+    public String toString() {
+        return "Patient{" + "Id_patient=" + Id_patient + ", Nom_patient=" + Nom_patient + ", Pr\u00e9nom_patient=" + Prénom_patient + ", Email_patient=" + Email_patient + ", Adress_patient=" + Adress_patient + ", NumTel_patient=" + NumTel_patient + ", MotDePassel_patient=" + MotDePassel_patient + ", Age_patient=" + Age_patient + ", Gendre_patient=" + Gendre_patient + ", Nb_Rdv=" + Nb_Rdv + ", Nb_Achat=" + Nb_Achat + ", Nb_Reclamation=" + Nb_Reclamation + ", isblokedpatient=" + isblokedpatient + '}';
+    }
+
     public Boolean getIsblokedpatient() {
         return isblokedpatient;
     }

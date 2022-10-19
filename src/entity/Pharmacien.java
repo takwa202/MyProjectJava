@@ -19,6 +19,64 @@ public class Pharmacien {
     private String MotDePasse_Pharmacien;
     private String Email_Pharmacien;
     private int Blockfarm;
+    private String picturePharm;
+    private int nbrReclamation;
+
+    public Pharmacien(String nom_Pharmacien, String Prenom_Pharmacien, String Adress_Pharmacien, int NumTel_Pharmacien, String MotDePasse_Pharmacien, String Email_Pharmacien, int Blockfarm, String picturePharm, int nbrReclamation) {
+        this.nom_Pharmacien = nom_Pharmacien;
+        this.Prenom_Pharmacien = Prenom_Pharmacien;
+        this.Adress_Pharmacien = Adress_Pharmacien;
+        this.NumTel_Pharmacien = NumTel_Pharmacien;
+        this.MotDePasse_Pharmacien = MotDePasse_Pharmacien;
+        this.Email_Pharmacien = Email_Pharmacien;
+        this.Blockfarm = Blockfarm;
+        this.picturePharm = picturePharm;
+        this.nbrReclamation = nbrReclamation;
+    }
+
+    public Pharmacien(String nom_Pharmacien, String Prenom_Pharmacien, String Adress_Pharmacien, int NumTel_Pharmacien, String MotDePasse_Pharmacien, String Email_Pharmacien, int Blockfarm, String picturePharm) {
+        this.nom_Pharmacien = nom_Pharmacien;
+        this.Prenom_Pharmacien = Prenom_Pharmacien;
+        this.Adress_Pharmacien = Adress_Pharmacien;
+        this.NumTel_Pharmacien = NumTel_Pharmacien;
+        this.MotDePasse_Pharmacien = MotDePasse_Pharmacien;
+        this.Email_Pharmacien = Email_Pharmacien;
+        this.Blockfarm = Blockfarm;
+        this.picturePharm = picturePharm;
+    }
+
+    public Pharmacien(int Id_Pharmacien, String nom_Pharmacien, String Prenom_Pharmacien, String Adress_Pharmacien, int NumTel_Pharmacien, String MotDePasse_Pharmacien, String Email_Pharmacien, int Blockfarm, String picturePharm, int nbrReclamation) {
+        this.Id_Pharmacien = Id_Pharmacien;
+        this.nom_Pharmacien = nom_Pharmacien;
+        this.Prenom_Pharmacien = Prenom_Pharmacien;
+        this.Adress_Pharmacien = Adress_Pharmacien;
+        this.NumTel_Pharmacien = NumTel_Pharmacien;
+        this.MotDePasse_Pharmacien = MotDePasse_Pharmacien;
+        this.Email_Pharmacien = Email_Pharmacien;
+        this.Blockfarm = Blockfarm;
+        this.picturePharm = picturePharm;
+        this.nbrReclamation = nbrReclamation;
+    }
+
+    public Pharmacien(int Id_Pharmacien, String nom_Pharmacien, String Prenom_Pharmacien, String Adress_Pharmacien, int NumTel_Pharmacien, String MotDePasse_Pharmacien, String Email_Pharmacien, int Blockfarm, String picturePharm) {
+        this.Id_Pharmacien = Id_Pharmacien;
+        this.nom_Pharmacien = nom_Pharmacien;
+        this.Prenom_Pharmacien = Prenom_Pharmacien;
+        this.Adress_Pharmacien = Adress_Pharmacien;
+        this.NumTel_Pharmacien = NumTel_Pharmacien;
+        this.MotDePasse_Pharmacien = MotDePasse_Pharmacien;
+        this.Email_Pharmacien = Email_Pharmacien;
+        this.Blockfarm = Blockfarm;
+        this.picturePharm = picturePharm;
+    }
+
+    public String getPicturePharm() {
+        return picturePharm;
+    }
+
+    public void setPicturePharm(String picturePharm) {
+        this.picturePharm = picturePharm;
+    }
 
     public Pharmacien(
             int Id_Pharmacien,
@@ -29,28 +87,7 @@ public class Pharmacien {
             String MotDePasse_Pharmacien,
             String Email_Pharmacien,
             int Blockfarm) {
-         this.Id_Pharmacien = Id_Pharmacien;
-        this.Prenom_Pharmacien = Prenom_Pharmacien;
-        this.nom_Pharmacien = nom_Pharmacien;
-        this.Adress_Pharmacien = Adress_Pharmacien;
-        this.NumTel_Pharmacien = NumTel_Pharmacien;
-        this.MotDePasse_Pharmacien = MotDePasse_Pharmacien;
-        this.Email_Pharmacien = Email_Pharmacien;
-        this.Blockfarm= Blockfarm;
-
-    }
-    
-   // constructor without id
-    public Pharmacien(
-           
-            String nom_Pharmacien,
-            String Prenom_Pharmacien,
-            String Adress_Pharmacien,
-            int NumTel_Pharmacien,
-            String MotDePasse_Pharmacien,
-            String Email_Pharmacien,
-            int Blockfarm) {
-         
+        this.Id_Pharmacien = Id_Pharmacien;
         this.Prenom_Pharmacien = Prenom_Pharmacien;
         this.nom_Pharmacien = nom_Pharmacien;
         this.Adress_Pharmacien = Adress_Pharmacien;
@@ -60,6 +97,52 @@ public class Pharmacien {
         this.Blockfarm = Blockfarm;
 
     }
+
+    // constructor without id
+    public Pharmacien(
+            String nom_Pharmacien,
+            String Prenom_Pharmacien,
+            String Adress_Pharmacien,
+            int NumTel_Pharmacien,
+            String MotDePasse_Pharmacien,
+            String Email_Pharmacien,
+            int Blockfarm) {
+
+        this.Prenom_Pharmacien = Prenom_Pharmacien;
+        this.nom_Pharmacien = nom_Pharmacien;
+        this.Adress_Pharmacien = Adress_Pharmacien;
+        this.NumTel_Pharmacien = NumTel_Pharmacien;
+        this.MotDePasse_Pharmacien = MotDePasse_Pharmacien;
+        this.Email_Pharmacien = Email_Pharmacien;
+        this.Blockfarm = Blockfarm;
+
+    }
+
+    public Pharmacien(String nom_Pharmacien, String Prenom_Pharmacien, String Adress_Pharmacien, int NumTel_Pharmacien, String MotDePasse_Pharmacien, String Email_Pharmacien, int Blockfarm, int nbrReclamation, String picturePharm) {
+        this.nom_Pharmacien = nom_Pharmacien;
+        this.Prenom_Pharmacien = Prenom_Pharmacien;
+        this.Adress_Pharmacien = Adress_Pharmacien;
+        this.NumTel_Pharmacien = NumTel_Pharmacien;
+        this.MotDePasse_Pharmacien = MotDePasse_Pharmacien;
+        this.Email_Pharmacien = Email_Pharmacien;
+        this.Blockfarm = Blockfarm;
+        this.nbrReclamation = nbrReclamation;
+        this.picturePharm = picturePharm;
+    }
+
+    public Pharmacien(int Id_Pharmacien, String nom_Pharmacien, String Prenom_Pharmacien, String Adress_Pharmacien, int NumTel_Pharmacien, String MotDePasse_Pharmacien, String Email_Pharmacien, int Blockfarm, int nbrReclamation, String picturePharm) {
+        this.Id_Pharmacien = Id_Pharmacien;
+        this.nom_Pharmacien = nom_Pharmacien;
+        this.Prenom_Pharmacien = Prenom_Pharmacien;
+        this.Adress_Pharmacien = Adress_Pharmacien;
+        this.NumTel_Pharmacien = NumTel_Pharmacien;
+        this.MotDePasse_Pharmacien = MotDePasse_Pharmacien;
+        this.Email_Pharmacien = Email_Pharmacien;
+        this.Blockfarm = Blockfarm;
+        this.nbrReclamation = nbrReclamation;
+        this.picturePharm = picturePharm;
+    }
+
     public int getId_Pharmacien() {
         return Id_Pharmacien;
     }
@@ -122,6 +205,19 @@ public class Pharmacien {
 
     public void setBlockfarm(int Blockfarm) {
         this.Blockfarm = Blockfarm;
+    }
+
+    public int getNbrReclamation() {
+        return nbrReclamation;
+    }
+
+    public void setNbrReclamation(int nbrReclamation) {
+        this.nbrReclamation = nbrReclamation;
+    }
+
+    @Override
+    public String toString() {
+        return "Pharmacien{" + "Id_Pharmacien=" + Id_Pharmacien + ", nom_Pharmacien=" + nom_Pharmacien + ", Prenom_Pharmacien=" + Prenom_Pharmacien + ", Adress_Pharmacien=" + Adress_Pharmacien + ", NumTel_Pharmacien=" + NumTel_Pharmacien + ", MotDePasse_Pharmacien=" + MotDePasse_Pharmacien + ", Email_Pharmacien=" + Email_Pharmacien + ", Blockfarm=" + Blockfarm + '}';
     }
 
 }

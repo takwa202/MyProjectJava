@@ -41,9 +41,10 @@ public class PharmacienServeces implements InterPharmServeses<Pharmacien> {
     public void insert(Pharmacien farm) {
 
         String req = "INSERT INTO `pharmacien`(`nom_Pharmacien`, `Prenom_Pharmacien`, `Adress_Pharmacien`, `NumTel_Pharmacien`, `MotDePasse_Pharmacien`,"
-                + "`Email_Pharmacien`, `Blockfarm` ) "
+                + "`Email_Pharmacien`, `Blockfarm`,`picturePharm` ) "
                 + "values ('" + farm.getNom_Pharmacien() + "','" + farm.getPrenom_Pharmacien() + "','" + farm.getAdress_Pharmacien() + "','"
-                + farm.getNumTel_Pharmacien() + "','" + hashingFunction(farm.getMotDePasse_Pharmacien()) + "','" + farm.getEmail_Pharmacien() + "','" + farm.getBlockfarm() + "')";
+                + farm.getNumTel_Pharmacien() + "','" + hashingFunction(farm.getMotDePasse_Pharmacien()) + "','" + farm.getEmail_Pharmacien() + "'"
+                + ",'" + farm.getBlockfarm() + "', '" + farm.getPicturePharm()+ "')";
 
         try {
             Statement st = conx.createStatement();
@@ -65,7 +66,7 @@ public class PharmacienServeces implements InterPharmServeses<Pharmacien> {
                 + farm.getNumTel_Pharmacien() + "',"
                 + "`MotDePasse_Pharmacien`='" + hashingFunction(farm.getMotDePasse_Pharmacien()) + "',"
                 + "`Email_Pharmacien`='" + farm.getEmail_Pharmacien() + "',"
-                + "`Blockfarm` ='" + farm.getBlockfarm() + "' WHERE Id_Pharmacien = '" + id + "'  ";
+                + "`Blockfarm` ='" + farm.getBlockfarm() + "',`picturePharm` = '" + farm.getPicturePharm()+ "' WHERE Id_Pharmacien = '" + id + "'  ";
 
         try {
             Statement st = conx.createStatement();
@@ -101,8 +102,8 @@ public class PharmacienServeces implements InterPharmServeses<Pharmacien> {
             Statement st = conx.createStatement();
             rs = st.executeQuery(req);
             while (rs.next()) {
-                Pharmacien e = new Pharmacien(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8));
+                Pharmacien e = new Pharmacien(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),  
+                   rs.getInt(5), rs.getString(6), rs.getString(7), rs.getInt(8),rs.getString(9),rs.getInt(10));
                 list.add(e);
             }
             System.out.println("PHARM GETED SUCCSEFULY !");
@@ -118,14 +119,14 @@ public class PharmacienServeces implements InterPharmServeses<Pharmacien> {
     public List<Pharmacien> FindById(int id) {
         List <Pharmacien> list = new ArrayList<>();
         String req = "SELECT `Id_Pharmacien`,`nom_Pharmacien`, `Prenom_Pharmacien`, `Adress_Pharmacien`, `NumTel_Pharmacien`, `MotDePasse_Pharmacien`,"
-                + "`Email_Pharmacien`, `Blockfarm` From `pharmacien` WHERE Id_Pharmacien  = '" + id + "' ";
+                + "`Email_Pharmacien`, `Blockfarm`,`picturePharm`From `pharmacien` WHERE Id_Pharmacien  = '" + id + "' ";
 System.out.println(req);
         try {
             Statement st = conx.createStatement();
             rs2 = st.executeQuery(req);
             while (rs2.next()) {
                 Pharmacien e = new Pharmacien(rs2.getInt(1), rs2.getString(2), rs2.getString(3), rs2.getString(4),
-                        rs2.getInt(5), rs2.getString(6), rs2.getString(7), rs2.getInt(8));
+                        rs2.getInt(5), rs2.getString(6), rs2.getString(7), rs2.getInt(8),rs2.getString(9));
                 list.add(e);
             }
             System.out.println("PARMACIEN FOUND SUCCSEFULY !");
@@ -138,18 +139,38 @@ System.out.println(req);
 
     @Override
     public List searchByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ List <Pharmacien> list = new ArrayList<>();
+        String req = "SELECT `Id_Pharmacien`,`nom_Pharmacien`, `Prenom_Pharmacien`, `Adress_Pharmacien`, `NumTel_Pharmacien`, `MotDePasse_Pharmacien`,"
+                + "`Email_Pharmacien`, `Blockfarm`,`picturePharm` From `pharmacien` WHERE nom_Pharmacien  = '" + name + "' ";
+System.out.println(req);
+        try {
+            Statement st = conx.createStatement();
+            rs2 = st.executeQuery(req);
+            while (rs2.next()) {
+                Pharmacien e = new Pharmacien(rs2.getInt(1), rs2.getString(2), rs2.getString(3), rs2.getString(4),
+                        rs2.getInt(5), rs2.getString(6), rs2.getString(7), rs2.getInt(8), rs2.getString(9));
+                list.add(e);
+            }
+            System.out.println("PARMACIEN FOUND SUCCSEFULY !");
 
-    @Override
-    public List searchBySpeciality(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;    }
 
+   
     @Override
-    public void bloqueMed(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void bloqueFARM(int id) {
+   String req = "UPDATE `pharmacien` SET  `Blockfarm` = 1  WHERE Id_Pharmacien = '" + id + "'  ";
+
+        try {
+            Statement st = conx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("PHARMACIN BLOCKED SUCCSEFULY !");
+            //  System.out.println(med); 
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }    }
 
     public String hashingFunction(String pass) {
         String plaintext = "your text here";
@@ -173,5 +194,58 @@ System.out.println(req);
 
         return hashtext;
     }
+
+    @Override
+    public boolean exist(int id) {
+List <Pharmacien> list = new ArrayList<>();
+  boolean resut;
+        String req = "SELECT `Id_Pharmacien`,`nom_Pharmacien`, `Prenom_Pharmacien`, `Adress_Pharmacien`, `NumTel_Pharmacien`, `MotDePasse_Pharmacien`,"
+                + "`Email_Pharmacien`, `Blockfarm` From `pharmacien` WHERE Id_Pharmacien  = '" + id + "' ";
+System.out.println(req);
+        try {
+            Statement st = conx.createStatement();
+            rs2 = st.executeQuery(req);
+            while (rs2.next()) {
+                Pharmacien e = new Pharmacien(rs2.getInt(1), rs2.getString(2), rs2.getString(3), rs2.getString(4),
+                        rs2.getInt(5), rs2.getString(6), rs2.getString(7), rs2.getInt(8));
+                list.add(e);
+            }
+            System.out.println("PARMACIEN FOUND SUCCSEFULY !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }if (list.size() == 0) {
+            System.out.println("PHARM NOT FOUND !");
+            resut= false;
+        } else {
+              System.out.println("PHARM FOUND SUCCSEFULY !");
+               resut= true;
+        }
+        return resut;   }
+
+    @Override
+    public boolean isblocked(int id) {
+ int blc=0;
+  boolean resut;
+        String req = "SELECT `Blockfarm` From `pharmacien` WHERE Id_Pharmacien  = '" + id + "' ";
+System.out.println(req);
+        try {
+            Statement st = conx.createStatement();
+            rs2 = st.executeQuery(req);
+            while (rs2.next()) {
+               blc =rs2.getInt(1);
+            }
+            System.out.println("PARMACIEN FOUND SUCCSEFULY !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }if (blc == 0) {
+            System.out.println("PHARM NOT BLOCKED!");
+            resut= false;
+        } else {
+              System.out.println("PHARM  IS BLOCKED!");
+               resut= true;
+        }
+        return resut;      }
 
 }

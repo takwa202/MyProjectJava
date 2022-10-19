@@ -149,18 +149,65 @@ public class MedServices implements InterMedServeses<Medcin> {
     }
 
     @Override
-    public List searchByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List searchByName(String nom_med) {
+List<Medcin> list = new ArrayList<>();
+        String req = "SELECT  `id_med`, `mdp_med`, `email_med`, `date_naissance_med`, `age_med`,"
+                + " `adresse_med`, `genre_med`,`nom_med`, `prenom_med`, `num_tel_med`, "
+                + "`photo_med`,`photo_dip`,`nb_rec_med`,`nb_patient`,`is_Blocked`,"
+                + "`spéciatilte` From `medecin` WHERE nom_med= '" + nom_med + "' ";
+
+        try {
+            Statement st = conx.createStatement();
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                Medcin e = new Medcin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), rs.getInt(15), rs.getString(16));
+                list.add(e);
+            }
+            System.out.println("MEDCIN FOUND SUCCSEFULY !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;    }
 
     @Override
     public List searchBySpeciality(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+List<Medcin> list = new ArrayList<>();
+        String req = "SELECT  `id_med`, `mdp_med`, `email_med`, `date_naissance_med`, `age_med`,"
+                + " `adresse_med`, `genre_med`,`nom_med`, `prenom_med`, `num_tel_med`, "
+                + "`photo_med`,`photo_dip`,`nb_rec_med`,`nb_patient`,`is_Blocked`,"
+                + "`spéciatilte` From `medecin` WHERE spéciatilte= '" + name + "' ";
+
+        try {
+            Statement st = conx.createStatement();
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                Medcin e = new Medcin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), rs.getInt(15), rs.getString(16));
+                list.add(e);
+            }
+            System.out.println("MEDCIN FOUND SUCCSEFULY !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        return list;        }
 
     @Override
-    public void bloqueMed(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void bloqueMed( int id) {
+        
+         String req = "UPDATE `medecin` SET`is_Blocked`= 1 WHERE id_med= '" + id + "'";
+
+        try {
+            Statement st = conx.createStatement();
+            st.executeUpdate(req);
+            // System.out.println(med); 
+            //  System.out.println(req); 
+            System.out.println("MEDCIN UPDATED SUCCSEFULY !");
+            //  System.out.println(med); 
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+
     }
 
     public String hashingFunction(String pass) {
@@ -185,5 +232,62 @@ public class MedServices implements InterMedServeses<Medcin> {
 
          return hashtext;
     }
+
+    @Override
+    public boolean exist(int id) {
+  List<Medcin> list = new ArrayList<>();
+  boolean resut;
+        String req = "SELECT  `id_med`, `mdp_med`, `email_med`, `date_naissance_med`, `age_med`, `adresse_med`, `genre_med`,`nom_med`, `prenom_med`, `num_tel_med`, `photo_med`,`photo_dip`,`nb_rec_med`,`nb_patient`,`is_Blocked`,`spéciatilte` From `medecin` WHERE id_med= '" + id + "' ";
+
+        try {
+            Statement st = conx.createStatement();
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                Medcin e = new Medcin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), rs.getInt(15), rs.getString(16));
+                list.add(e);
+            }
+            
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        if (list.size() == 0) {
+            System.out.println("MEDCIN NOT FOUND !");
+            resut= false;
+        } else {
+              System.out.println("MEDCIN FOUND SUCCSEFULY !");
+               resut= true;
+        }
+        return resut;    }
+
+    @Override
+    public boolean isblocked(int id) {
+   int isB = 0;
+   boolean resut;
+        String req = "SELECT `is_Blocked` From `medecin` WHERE id_med= '" + id + "' ";
+
+        try {
+            Statement st = conx.createStatement();
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+               isB = rs.getInt(1);
+            }
+            
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        if (isB == 0) {
+            System.out.println("MEDCIN NOT Blocked !");
+            resut= false;
+        } else {
+              System.out.println("MEDCIN is Blocked !");
+               resut= true;
+               System.out.println(resut);
+        }
+        return resut;       }
+    
+    
+   
 
 }

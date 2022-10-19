@@ -18,8 +18,10 @@ public interface InterPharmServeses <T> {
     List FindAll();
     List FindById(int id );
     List searchByName(String name );
-    List searchBySpeciality(String name );
-    void bloqueMed(int id);
+   
+    void bloqueFARM(int id);
+     boolean exist(int id);
+    boolean isblocked(int id);
     
   
     

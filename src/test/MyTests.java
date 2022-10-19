@@ -31,16 +31,13 @@ import javafx.scene.control.Alert;
  *
  * @author lenovo
  */
-public class ProjetJavaUser {
-    /* Medcin(int id_med, String mdp_med, String email_med, Timestamp date_naissance_med,
-     int age_med, String adresse_med, String genre_med, String nom_med, String prenom_med,
-     int num_tel_med, String photo_med, int nb_rec_med, int nb_patient, Boolean is_Blocked,String spéciatilte*/
+public class MyTests {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
+      
       
         
         
@@ -158,31 +155,12 @@ public class ProjetJavaUser {
 
     // about time
 
-    public static void searchlist(List<Medcin> med) {
-        // int i = 0;
-        for (int j = 0; j < med.size(); j++) {
-            if (med.get(j).getId_med() == 1) {
-                System.out.println("foundit");
-            } else {
-                System.out.println("notfoundit");
-            }
-
-        }
-
-    }
+   
    /* public static void addimage (String url){
      InputStream input = ClassLoader.getResourceAsStream(url);
     }
 */
-    public static void affichlist(List<Medcin> med) {
-        // int i = 0;
-        for (int j = 0; j < med.size(); j++) {
-
-            System.out.println(med.get(j).getId_med());
-
-        }
-
-    }
+   
  //  Date date = new Date(1996-1900, 11, 12);
     public static Timestamp createdate(int y,int m,int j) {
          

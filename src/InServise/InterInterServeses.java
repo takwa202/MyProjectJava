@@ -15,10 +15,10 @@ public interface InterInterServeses <T> {
     void insert(T object);
     void update(T object, int id);
     void delete(int id);
-    List FindAll();
-    List FindById(int id );
-    List searchByName(String name );
-    List searchBySpeciality(String name );
-    void bloqueMed(int id);
+    List FindAll(int idM);
+    List FindById(int idM,int idP );
+    List searchByPatientName(String name ,int idM);
+    //List searchByDescription(String input );
+    
     
 }

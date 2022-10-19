@@ -16,6 +16,8 @@ public interface InterMedServeses <T> {
     void insert(T object);
     void update(T object, int id);
     void delete(int id);
+    boolean exist(int id);
+     boolean isblocked(int id);
     List FindAll();
     List FindById(int id );
     List searchByName(String name );

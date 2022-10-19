@@ -23,6 +23,18 @@ public class Interventions {
      public Interventions() {
         
     }
+
+    public Interventions(int id_med, int id_patien, Timestamp date_inter, String descriptions) {
+        this.id_med = id_med;
+        this.id_patien = id_patien;
+        this.date_inter = date_inter;
+        this.descriptions = descriptions;
+    }
+
+    @Override
+    public String toString() {
+        return "Interventions{" + "id_interv=" + id_interv + ", id_med=" + id_med + ", id_patien=" + id_patien + ", date_inter=" + date_inter + ", descriptions=" + descriptions + ", pastient=" + pastient + ", medcin=" + medcin + '}';
+    }
     
 //kol
     public Interventions(int id_interv, int id_med, int id_patien, Timestamp date_inter, String descriptions, Patient pastient, Medcin medcin) {
