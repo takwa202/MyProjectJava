@@ -202,7 +202,7 @@ List<Medcin> list = new ArrayList<>();
             st.executeUpdate(req);
             // System.out.println(med); 
             //  System.out.println(req); 
-            System.out.println("MEDCIN UPDATED SUCCSEFULY !");
+            System.out.println("MEDCIN BLOCKED SUCCSEFULY !");
             //  System.out.println(med); 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

@@ -3,13 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/ProjetJavaUser/src/entity/Pharmacien.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/ProjetJavaUser/src/projetjavauser/ProjetJavaUser.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/ProjetJavaUser/src/entity/Patient.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/ProjetJavaUser/src/servise/UserServeses.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/ProjetJavaUser/src/test/Test.java</file>
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/ProjetJavaUser/src/servise/InterServices.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/ProjetJavaUser/src/entity/Medcin.java</file>
             <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/ProjetJavaUser/src/servise/MedServices.java</file>
-            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/ProjetJavaUser/src/entity/Interventions.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/ProjetJavaUser/src/test/MyTests.java</file>
         </group>
     </open-files>
 </project-private>
