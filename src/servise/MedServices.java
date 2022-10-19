@@ -114,7 +114,7 @@ public class MedServices implements InterMedServeses<Medcin> {
                 Medcin e = new Medcin(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getTimestamp(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getInt(13), rs.getInt(14), rs.getInt(15), rs.getString(16));
                 list.add(e);
             }
-            System.out.println("MEDCIN DELETED SUCCSEFULY !");
+            System.out.println(" ALL MEDCIN FOUND SUCCSEFULY !");
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());

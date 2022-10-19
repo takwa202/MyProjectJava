@@ -73,12 +73,13 @@ public class Test {
          * ************************* test metier  *******************************************
          */
        //(onclik ...)
-     //  UserServeses us = new UserServeses();
+      UserServeses us = new UserServeses();
        //us.analyse_Users_Reclamtions_And_Block();
        //System.out.println(us.controleSaisieRegistermail(""));
        // System.out.println(us.controleSaisiepassword(""));
+      System.out.println(us.bestdocBySpec("specialier"));
        
-        
+       
         
 
     }

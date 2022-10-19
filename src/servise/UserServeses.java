@@ -24,35 +24,34 @@ public class UserServeses {
     PharmacienServeces FS = new PharmacienServeces();
     Mail send = new Mail();
 // si reclamtion > 5 send worning mail , after  rec block user
-    
-   // A regular expression
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX = 
-    Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-     public static final Pattern VALID_PASS_WORD_REGEX = 
-    Pattern.compile( "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$", Pattern.CASE_INSENSITIVE);
-/*
+
+    // A regular expression
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX
+            = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    public static final Pattern VALID_PASS_WORD_REGEX
+            = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8,20}$", Pattern.CASE_INSENSITIVE);
+    /*
      ^ represents starting character of the string.
-(?=.*[0-9]) represents a digit must occur at least once.
-(?=.*[a-z]) represents a lower case alphabet must occur at least once.
-(?=.*[A-Z]) represents an upper case alphabet that must occur at least once.
-(?=.*[@#$%^&-+=()] represents a special character that must occur at least once.
-(?=\\S+$) white spaces don’t allowed in the entire string.
-.{8, 20} represents at least 8 characters and at most 20 characters.
-$ represents the end of the string.
+     (?=.*[0-9]) represents a digit must occur at least once.
+     (?=.*[a-z]) represents a lower case alphabet must occur at least once.
+     (?=.*[A-Z]) represents an upper case alphabet that must occur at least once.
+     (?=.*[@#$%^&-+=()] represents a special character that must occur at least once.
+     (?=\\S+$) white spaces don’t allowed in the entire string.
+     .{8, 20} represents at least 8 characters and at most 20 characters.
+     $ represents the end of the string.
      */
 
-public boolean controleSaisieRegistermail(String mail){
-      boolean result = false;
-      Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(mail);
+    public boolean controleSaisieRegistermail(String mail) {
+        boolean result = false;
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(mail);
         return matcher.find();
-}
-public boolean controleSaisiepassword(String pass){
-      boolean result = false;
-      Matcher matcher = VALID_PASS_WORD_REGEX.matcher(pass);
-        return matcher.find();
-}
- 
+    }
 
+    public boolean controleSaisiepassword(String pass) {
+        boolean result = false;
+        Matcher matcher = VALID_PASS_WORD_REGEX.matcher(pass);
+        return matcher.find();
+    }
 
     public void analyse_Users_Reclamtions_And_Block() {
         // pour medcin 
@@ -79,7 +78,37 @@ public boolean controleSaisiepassword(String pass){
                 // System.out.println(a.getNb_rec_med());
             }
         }
+  }
+    
+    
+    public Medcin bestdocBySpec(String spes) {
+        List<Medcin> res = ms.FindAll();
+        Medcin med = new Medcin();
+           String s3=new String("dsdq");  
+        try {
+            
+            if (res != null) {
+                  for (Medcin a : res) {
+                      med=a;
+                if ( a.getNb_patient()> med.getNb_patient()) {
+                    if ( a.getSpeciatilte().equals(s3)) {
+                         med=a;
+                    }else{
+                        System.out.println("no");
+                            }
+                   
+                } 
+                // System.out.println(a.getNb_rec_med());
+            }}
+            
+        } catch (Exception ex) {
+             System.err.println(ex.getMessage());
+        }
+        
+        
 
+        return med;
     }
 
+    
 }
